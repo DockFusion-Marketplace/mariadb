@@ -1,0 +1,28 @@
+version: '3'
+services:
+  mariadb:
+    image: ghcr.io/deck-app/mariadb:${MARIADB_VERSION}
+    environment:
+      - 'MARIADB_DATABASE=${DB_NAME}'
+      - 'MARIADB_USER=${DB_USER}'
+      - 'MARIADB_PASSWORD=${DB_PASSWORD}'
+      - 'MARIADB_ROOT_PASSWORD=${DB_ROOT_PASSWORD}'
+    volumes:
+      - '${DATA_PATH_HOST}:/var/lib/mysql'
+    ports:
+      - ${MYSQL_PORT}:3306
+
+  phpmyadmin:
+    image: ghcr.io/deck-app/phpmyadmin:v4.9
+    environment:
+      - 'PMA_ARBITRARY=1'
+      - 'MYSQL_USER=${DB_USER}'
+      - 'MYSQL_PASSWORD=${DB_PASSWORD}'
+      - 'MYSQL_ROOT_PASSWORD=${DB_ROOT_PASSWORD}'
+    ports:
+      - '${PMA_PORT}:80'
+
+
+
+
+      

@@ -4,20 +4,50 @@ user:
     label:
       MariaDB version
     hint:
-      Select a MariaDB version from the list above
+      Select MariaDB version
     type:
       select
     values:
-      - 10.7
-      - 10.6
-      - 10.5
+      - 'lts'
+      - '11.7'
+      - '11.6'
+      - '11.5'
+      - '11.4'
+      - '11.3'
+      - '11.2'
+      - '11.1'
+      - '11.0'
+      - '10.11'
+      - '10.10'
+      - '10.9'
+      - '10.8'
+      - '10.7'
+      - '10.6'
+      - '10.5'
+      - '10.4'
+      - '10.3'
+      - '10.2'
+      - '10.1'
+      - '10.0'
+      - '5.5'
     target:
       MARIADB_VERSION
 
+  php_my_admin_version:
+    label:
+      PHP my admin version
+    hint:
+      Select PHP my admin version
+    type:
+      select
+    values:
+      - "5.0"
+      - "5.2.2"
+    target:
+      PHP_MY_ADMIN_VERSION
+
 #System defaults
 system:
-  #For collecting and storing DB in .env
-  #db/user/password
   db_credentials:
     true
   #Generate public ports for the docker image
@@ -25,6 +55,4 @@ system:
     http:
       PMA_PORT
     others:
-      - MYSQL_PORT
-
-
+      - MARIADB_PORT
